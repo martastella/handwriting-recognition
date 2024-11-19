@@ -1,4 +1,4 @@
-# Handwriting Synthesis and Recognition Model
+# :writing_hand: Handwriting Synthesis and Recognition Model :writing_hand:
 
 This project implements a handwriting synthesis model based on the paper "Generating Sequences With Recurrent Neural Networks" by Alex Graves. The model can generate handwriting in both unconditional and conditional (text-to-handwriting) modes. Additionally, it includes a handwriting recognition feature to convert handwritten strokes back into text.
 
@@ -10,18 +10,18 @@ The project supports:
 - Handwriting Recognition:
     - Converts sequences of pen strokes into text using an enhanced recognition model with residual LSTMs and attention mechanisms.
 
-## Project Features
+## Project Features :dart:
 1. Synthesis
     - Generates realistic handwriting with temporal stroke sequences.
     - Supports both unconditional and conditional text-based handwriting synthesis.
-2. Recognition
+2. Recognition (STILL IN PROGRESS)
     - Recognizes handwritten strokes and converts them to text.
     - Enhanced features:
         - Residual connections in LSTM layers for gradient efficiency.
         - Attention mechanism for focused sequence decoding.
         - Support for Focal CTC Loss for imbalanced sequence training.
 
-## Project Structure
+## Project Structure :card_index_dividers:
 
 <pre>
 handwriting_synthesis/
@@ -49,7 +49,7 @@ handwriting_synthesis/
 └── README.md                    # This file
 </pre>
 
-## Setup
+## Setup :gear:
 
 1. Clone this repository:
 
@@ -72,7 +72,7 @@ handwriting_synthesis/
     python data_preprocessing.py --task recognition
     ```
 
-## Training
+## Training Synthesis :runner:
 
 Run training script specifying the task (for unconditional or conditional handwriting generation):
 
@@ -83,7 +83,7 @@ python train.py --task 'unconditional_handwriting'
 python train.py --task 'conditional_handwriting'
 ```
 
-### Recognition Model
+## Training Recognition (To be improved...) :runner:
 
 To train the handwriting recognition model, use:
 ```
@@ -92,19 +92,15 @@ python train_recognition.py --batch_size 32 --num_epochs 100 --learning_rate 0.0
 
 You can adjust the hyperparameters as needed. The trained model will be saved in the `save/` directory.
 
-## Generation
+## Generation :pencil2:
 
 Visualize the results on `generation.ipynb`.
 
-## Recognition
+## Recognition (To be improved...) :mag:
 
 Visualize the results on `recognition.ipynb`.
 
 
-## References
+## References :books:
 
 - Graves, A. (2013). Generating Sequences With Recurrent Neural Networks. [arXiv:1308.0850](https://arxiv.org/abs/1308.0850)
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
