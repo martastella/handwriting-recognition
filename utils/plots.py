@@ -22,13 +22,16 @@ def plot_stroke(stroke, save_name=None):
     ax.axis('equal')
     ax.axis('off')
 
-    if save_name is None:
-        plt.show()
-    else:
+    if save_name is not None:
         try:
-            plt.savefig(save_name, bbox_inches='tight', pad_inches=0.5)
+            plt.draw()  
+            plt.savefig(save_name, bbox_inches='tight', pad_inches=0.5, dpi=300)
+            print(f"Image saved as {save_name}")
         except Exception as e:
             print(f"Error saving image: {save_name}. Error: {str(e)}")
+
+    # Optionally, show the plot
+    plt.show()
 
     plt.close()
 

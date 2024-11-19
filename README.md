@@ -96,6 +96,12 @@ You can adjust the hyperparameters as needed. The trained model will be saved in
 
 Visualize the results on `generation.ipynb`.
 
+### Example of CONDITIONAL GENERATION :page_with_curl:
+
+![](generation1.png)
+![](generation2.png)
+![](generation3.png)
+
 ## Recognition (To be improved...) :mag:
 
 Visualize the results on `recognition.ipynb`.

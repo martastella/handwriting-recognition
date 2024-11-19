@@ -81,7 +81,8 @@ def generate_conditionally(
         random_seed=42,
         bias=1., 
         bias2=1., 
-        model_checkpoint='save\\conditional_handwriting_last_epoch_200.pt'):
+        model_checkpoint='save\\conditional_handwriting_last_epoch_200.pt',
+        save_figure_name=None):
     
     char_to_code = torch.load('char_to_code_generation.pt', weights_only=True)
     np.random.seed(random_seed)
@@ -174,5 +175,5 @@ def generate_conditionally(
         step_count += 1
     
     attention_weights_matrix = torch.stack(attention_weights_over_time).numpy().T
-    plot_stroke(np.array(stroke_record))
+    plot_stroke(np.array(stroke_record), save_name=save_figure_name)
     attention_plot(attention_weights_matrix)
