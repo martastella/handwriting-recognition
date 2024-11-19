@@ -1,5 +1,9 @@
 # :writing_hand: Handwriting Synthesis and Recognition Model :writing_hand:
 
+![](generation1.png)
+![](generation2.png)
+![](generation3.png)
+
 This project implements a handwriting synthesis model based on the paper "Generating Sequences With Recurrent Neural Networks" by Alex Graves. The model can generate handwriting in both unconditional and conditional (text-to-handwriting) modes. Additionally, it includes a handwriting recognition feature to convert handwritten strokes back into text.
 
 The project supports:
@@ -95,12 +99,6 @@ You can adjust the hyperparameters as needed. The trained model will be saved in
 ## Generation :pencil2:
 
 Visualize the results on `generation.ipynb`.
-
-### Example of CONDITIONAL GENERATION :page_with_curl:
-
-![](generation1.png)
-![](generation2.png)
-![](generation3.png)
 
 ## Recognition (To be improved...) :mag:
 
