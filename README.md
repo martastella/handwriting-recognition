@@ -4,7 +4,7 @@
 ![](generation2.png)
 ![](generation3.png)
 
-This project implements a handwriting synthesis model based on the paper "Generating Sequences With Recurrent Neural Networks" by Alex Graves. The model can generate handwriting in both unconditional and conditional (text-to-handwriting) modes. Additionally, it includes a handwriting recognition feature to convert handwritten strokes back into text.
+This project implements a handwriting synthesis model based on the paper "Generating Sequences With Recurrent Neural Networks" by Alex Graves. The model can generate handwriting in both unconditional and conditional (text-to-handwriting) modes. Additionally, it includes a handwriting recognition feature to convert handwritten text images into digital text.
 
 The project supports:
 - Handwriting Synthesis:
@@ -12,18 +12,18 @@ The project supports:
     - Conditional Generation: Generates handwriting for a given text.
 
 - Handwriting Recognition:
-    - Converts sequences of pen strokes into text using an enhanced recognition model with residual LSTMs and attention mechanisms.
+    - Converts images of handwritten text into digital text using a Convolutional Neural Network (CNN) combined with a Bidirectional Long Short-Term Memory (BiLSTM) network and Connectionist Temporal Classification (CTC) loss.
 
 ## Project Features :dart:
 1. Synthesis
     - Generates realistic handwriting with temporal stroke sequences.
     - Supports both unconditional and conditional text-based handwriting synthesis.
 2. Recognition (STILL IN PROGRESS)
-    - Recognizes handwritten strokes and converts them to text.
+    - Recognizes handwritten text from images and converts them to digital text.
     - Enhanced features:
-        - Residual connections in LSTM layers for gradient efficiency.
-        - Attention mechanism for focused sequence decoding.
-        - Support for Focal CTC Loss for imbalanced sequence training.
+        - CNN for feature extraction from input images.
+        - BiLSTM layers to capture contextual information in both forward and backward directions.
+        - CTC loss function to handle unsegmented data and align predicted sequences with input data.
 
 ## Project Structure :card_index_dividers:
 
@@ -43,12 +43,12 @@ handwriting_synthesis/
 │ └── plots.py                   # Functions for plotting handwriting
 │ 
 ├── weights/                     # Directory for trained model weights
-│ └── (Saved model weights)      
+│ └── (Saved model weights)
+│ 
+├── handwriting_recognition/     # Directory for handwriting recognition implementation
 │ 
 ├── train.py                     # Training script for synthesis
-├── train_recognition.py         # Training script for recognition
 ├── generate.py                  # Script for handwriting generation
-├── recognize.py                 # Script for handwriting recognition
 ├── data_preprocessing.py        # Data preparation scripts
 └── README.md                    # This file
 </pre>
@@ -72,9 +72,6 @@ handwriting_synthesis/
     ```
     python data_preprocessing.py --task generation
     ```
-    ```
-    python data_preprocessing.py --task recognition
-    ```
 
 ## Training Synthesis :runner:
 
@@ -87,24 +84,35 @@ python train.py --task 'unconditional_handwriting'
 python train.py --task 'conditional_handwriting'
 ```
 
+You can adjust the hyperparameters as needed. The trained model will be saved in the `save/` directory.
+
 ## Training Recognition (To be improved...) :runner:
 
-To train the handwriting recognition model, use:
+The handwriting recognition model is implemented in a Jupyter notebook located in the handwriting_recognition/ directory. To train the recognition model: 
+
+1. Navigate to the recognition directory:
 ```
-python train_recognition.py --batch_size 32 --num_epochs 100 --learning_rate 0.001 --char_to_code_path char_to_code_recognition.pt 
+cd handwriting_recognition/
 ```
 
-You can adjust the hyperparameters as needed. The trained model will be saved in the `save/` directory.
+2. Open the jupiter notebook
+```
+jupyter notebook recognition_notebook.ipynb
+```
+
+3. Follow the instructions within the notebook to preprocess data, define the model architecture (CNN-BiLSTM with CTC loss), train the model, and evaluate its performance.
+
 
 ## Generation :pencil2:
 
 Visualize the results on `generation.ipynb`.
 
-## Recognition (To be improved...) :mag:
+## Recognition :mag:
 
-Visualize the results on `recognition.ipynb`.
+The handwriting recognition implementation is provided in the `handwriting_recognition/recognition_notebook.ipynb` notebook. This notebook guides you through the process of training and evaluating the recognition model using a CNN-BiLSTM architecture with CTC loss.
 
 
 ## References :books:
 
 - Graves, A. (2013). Generating Sequences With Recurrent Neural Networks. [arXiv:1308.0850](https://arxiv.org/abs/1308.0850)
+- CNN-BiLSTM model for English Handwriting Recognition. [ResearchGate](https://www.researchgate.net/publication/365494707_CNN-BiLSTM_model_for_English_Handwriting_Recognition_Comprehensive_Evaluation_on_the_IAM_Dataset)
